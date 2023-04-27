@@ -28,6 +28,7 @@ function Home() {
   return (
     <Div>
       <NotLoggedIn>
+        Quiz App helps you learn by providing you questions to work on in different categories. <br /><br />
         Not logged in. <Link to="/login">Log in</Link>
       </NotLoggedIn>
     </Div>

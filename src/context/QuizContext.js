@@ -104,17 +104,12 @@ const quizzes = [
 
 export default function QuizProvider(props) {
 
-  const [qs, setQs] = useState(JSON.parse(localStorage.getItem('quizzes')));
-
-  useEffect(() => {
-    setQs(JSON.parse(localStorage.getItem('quizzes')));
-    console.log('quizzes update', qs)
-  }, [localStorage.getItem('quizzes')])
-
+  const [qs, setQuizzes] = useState(JSON.parse(localStorage.getItem('quizzes')));
 
   const [start, setStart] = useState(false);
   const [exit, setExit] = useState(false);
   const [correct, setCorrect] = useState(0);
+  const [score, setScore] = useState(0);
   return (
     <QuizContext.Provider
       value={{
@@ -122,9 +117,12 @@ export default function QuizProvider(props) {
         exit,
         setStart,
         setExit,
-        quizzes,
+        quizzes: qs || [],
+        setQuizzes,
         correct,
         setCorrect,
+        score,
+        setScore
       }}
     >
       {props.children}

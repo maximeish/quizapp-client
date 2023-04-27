@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Redirect } from "react-router";
 import { useNavigate, Link } from "react-router-dom";
+import { QuizContext } from "../context/QuizContext";
 
 import {
   NavbarWrapper,
@@ -11,6 +12,7 @@ import {
 } from "../styles/NavBar";
 
 function NavBar() {
+  const {score} = useContext(QuizContext);
   const token = localStorage.getItem("auth-token");
   const navigate = useNavigate();
 
@@ -56,6 +58,16 @@ function NavBar() {
           <Logo>QuizApp</Logo>
           <Navbar>
             <NavbarLinkWrapper>
+              <NavbarLink
+                style={{
+                  textDecoration: "none",
+                  opacity: 0.9,
+                  color: "#fff",
+                  marginRight: "2em",
+                }}
+              >
+                Attempted Questions: {score}
+              </NavbarLink>
               <NavbarLink>
                 <Link
                   to="/"

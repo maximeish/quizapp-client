@@ -8,7 +8,7 @@ export const Navbar = styled.nav`
 `;
 
 export const NavbarWrapper = styled.header`
-  background-color: grey;
+  background-color: #7aa874;
   position: relative;
   width: 100%;
   display: flex;

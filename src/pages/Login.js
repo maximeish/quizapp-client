@@ -17,6 +17,7 @@ import {
 
 import { PuffLoader } from "react-spinners";
 import getAll from "../utils/getAllQuizzes";
+import { QuizContext } from "../context/QuizContext";
 
 function Login() {
   const [email, setEmail] = React.useState("");
@@ -26,6 +27,7 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setUserData } = useContext(UserContext);
+  const { setScore } = useContext(QuizContext);
 
   const emailEntered = (e) => {
     setEmail(e.target.value);
@@ -65,7 +67,27 @@ function Login() {
         }
       );
 
-      localStorage.setItem("quizzes", JSON.stringify(q.data));
+      const score = await axios.get(
+        "https://quizz-app.herokuapp.com/v1/quiz/score",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("auth-token")}`,
+          },
+        }
+      );
+
+      console.log("got score", score.data.data.userQuiz);
+
+      let scoreSum = 0;
+
+      if (score.data.data.userQuiz.length !== 0) {
+        scoreSum = score.user.data.data.userQuiz.reduce((scoreSum, s) => scoreSum + s.score);
+      }
+
+      setScore(scoreSum);
+
+      localStorage.setItem("score", scoreSum);
+      localStorage.setItem("quizCategories", JSON.stringify(q.data));
 
       navigate("/quiz");
     } catch (err) {
