@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dadf8d73-d17d-451e-a9a7-ad3749a571a0/deploy-status)](https://app.netlify.com/sites/quizapp-client/deploys)
+
 # Quiz App Client
 
 Quiz App is a React web application containing Styled components and TypeScript. This is a client application that provides UI to work on questions, and view scores.
