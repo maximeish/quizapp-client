@@ -1,7 +1,5 @@
-import axios from "axios";
-import React, { useState, useEffect, useContext } from "react";
-import UserContext from "../context/UserContext";
-import { Link } from "react-router-dom";
+import React from "react";
+
 import styled from "styled-components";
 
 const QuestionCard = styled.div`
@@ -16,9 +14,6 @@ const QuestionCard = styled.div`
 `;
 
 function Card(props) {
-  const [count, setCount] = useState("0");
-  const { userData } = useContext(UserContext);
-
   return <QuestionCard>{props.children}</QuestionCard>;
 }
 

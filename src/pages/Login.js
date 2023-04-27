@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import axios from "axios";
 import UserContext from "../context/UserContext";
 import { useNavigate, Link } from "react-router-dom";
@@ -16,14 +15,12 @@ import {
 } from "../components/formComponents";
 
 import { PuffLoader } from "react-spinners";
-import getAll from "../utils/getAllQuizzes";
 import { QuizContext } from "../context/QuizContext";
 
 function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [passwordInvalid, setPasswordInvalid] = React.useState(false);
-  const [error, setError] = useState();
+  const [passwordInvalid] = React.useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { setUserData } = useContext(UserContext);
@@ -81,7 +78,9 @@ function Login() {
       let scoreSum = 0;
 
       if (score.data.data.userQuiz.length !== 0) {
-        scoreSum = score.user.data.data.userQuiz.reduce((scoreSum, s) => scoreSum + s.score);
+        scoreSum = score.user.data.data.userQuiz.reduce(
+          (scoreSum, s) => scoreSum + s.score
+        );
       }
 
       setScore(scoreSum);

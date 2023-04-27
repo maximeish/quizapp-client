@@ -21,7 +21,7 @@ function Signup() {
   const [name, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [passwordInvalid, setPasswordInvalid] = React.useState(false);
+  const [passwordInvalid, ] = React.useState(false);
   const [loading, setLoading] = useState(false);
 
   const usernameEntered = (e) => {

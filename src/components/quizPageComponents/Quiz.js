@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
 import { QuizContext } from "../../context/QuizContext";
 import styled from "styled-components";
-import axios from "axios";
 import { toast } from "react-toastify";
 
 const Box = ({ current, next }) => {
-  const { score, quizzes, correct, setCorrect, setExit, setScore } =
+  const { score, quizzes, setExit, setScore } =
     useContext(QuizContext);
   console.log("quizzes available", quizzes);
   const [ans, setAns] = useState("");
@@ -65,20 +64,18 @@ const Box = ({ current, next }) => {
   const saveHandler = async () => {
     quizzes[current].answers.filter((a) => {
       if (a.isCorrect === ans) {
-        setScore(score + 1);
-        console.log("correct");
-      } else {
-        console.log("wrong");
+        return setScore(score + 1);
       }
+      return null;
     });
     // if (quizzes[current].answers === ans) {
     //   setCorrect(correct + 1);
     // }
     setAns(false);
     if (current + 1 === quizzes.length) {
-      setExit(true);
+      return setExit(true);
     } else {
-      next(current + 1);
+      return next(current + 1);
     }
   };
   return (

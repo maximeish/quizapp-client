@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Redirect } from "react-router";
+import React, {  useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { QuizContext } from "../context/QuizContext";
 

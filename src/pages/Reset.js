@@ -1,21 +1,15 @@
 import React, { useState, useContext } from "react";
-import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import axios from "axios";
 import UserContext from "../context/UserContext";
-import { useNavigate, Link } from "react-router-dom";
 import {
   StyledForm,
   StyledInput,
   StyledButton,
-  StyledAlert,
-  StyledLabel,
   FormWrapper,
-  FormTextWrapper,
 } from "../components/formComponents";
 
 function Reset() {
   const [email, setEmail] = useState();
-  const history = useNavigate();
   const { setUserData } = useContext(UserContext);
 
   const emailEntered = (e) => {

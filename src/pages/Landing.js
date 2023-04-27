@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
-import NavBar from "../components/NavBar";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Div } from "../components/formComponents";
@@ -23,7 +22,7 @@ function Home() {
   useEffect(() => {
     const token = localStorage.getItem("auth-token");
     if (token) navigate("/quiz");
-  }, []);
+  }, [navigate]);
 
   return (
     <Div>
