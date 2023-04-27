@@ -14,14 +14,14 @@ import {
   FormWrapper,
   FormTextWrapper,
 } from "../components/formComponents";
-
+import { toast } from "react-toastify";
 import { PuffLoader } from "react-spinners";
 
 function Signup() {
   const [name, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [passwordInvalid, ] = React.useState(false);
+  const [passwordInvalid] = React.useState(false);
   const [loading, setLoading] = useState(false);
 
   const usernameEntered = (e) => {
@@ -60,6 +60,16 @@ function Signup() {
       navigate("/login");
     } catch (err) {
       console.log(err);
+      toast.info(err.response.data.message, {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }
 
