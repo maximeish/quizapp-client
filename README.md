@@ -14,6 +14,8 @@ Quiz App is a React web application containing Styled components and TypeScript.
 Quiz App client has the following features:
 
 - User login and sign up
+- User logout
+- Quiz
 
 ## Installation
 
